@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import com.revature.entity.User;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
@@ -24,22 +26,35 @@ public class UserController {
 
             switch (input) {
                 case "1":
-                    // Login
+                    getAccountInfo();
                     break;
                 case "2":
-                    // Register
+                    registerUser();
                     break;
                 case "q":
                     // end user session
                     controlMap.put("continue service", "false");
             }
         } catch(Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            e.getStackTrace();
         }
     }
 
     public void registerUser() {
+        User accountInfo = getAccountInfo();
+        System.out.println(accountInfo);
+    }
 
+    public User getAccountInfo() {
+        String username;
+        String password;
+
+        System.out.println("Username: ");
+        username = scanner.nextLine();
+        System.out.println("Password: ");
+        password = scanner.nextLine();
+
+        return new User(username, password);
     }
 
 }
