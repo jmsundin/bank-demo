@@ -37,4 +37,9 @@ public class UserController {
             System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
+
+    public void registerUser() {
+
+    }
+
 }
