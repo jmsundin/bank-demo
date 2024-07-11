@@ -19,13 +19,13 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
             UserDao userDao = new SqliteUserDao();
             UserService userService = new UserService(userDao);
-            UserController controller = new UserController(scanner, userService);
-
             Map<String, String> controlMap = new HashMap<>();
             controlMap.put("continue service", "true");
 
+            UserController controller = new UserController(scanner, userService, controlMap);
+
             while(Boolean.parseBoolean(controlMap.get("continue service"))) {
-                controller.userPrompt(controlMap);
+                controller.userPrompt();
             }
         }
     }

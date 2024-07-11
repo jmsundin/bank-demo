@@ -11,17 +11,20 @@ public class UserController {
 
     private Scanner scanner;
     private UserService userService;
+    private Map<String, String> controlMap;
 
-    public UserController(Scanner scanner, UserService userService) {
+    public UserController(Scanner scanner, UserService userService, Map<String, String> controlMap) {
         this.scanner = scanner;
         this.userService = userService;
+        this.controlMap = controlMap;
     }
 
-    public void userPrompt(Map<String, String> controlMap) {
+    public void userPrompt() {
 
         System.out.println("What would you like to do?:");
         System.out.println("Login (type 1 + ENTER)");
         System.out.println("Register (type 2 + ENTER)");
+        System.out.println("Logout (type 3 + ENTER");
         System.out.println("Quit (type q + ENTER)");
 
         try {
@@ -29,11 +32,13 @@ public class UserController {
 
             switch (input) {
                 case "1":
-                    getAccountInfo();
+                    login();
                     break;
                 case "2":
                     registerUser();
                     break;
+                case "3":
+                    logout();
                 case "q":
                     // end user session
                     controlMap.put("continue service", "false");
@@ -43,8 +48,16 @@ public class UserController {
         }
     }
 
-    public User login() {
-        return userService.checkLoginAccountInfo(getAccountInfo());
+    public void login() {
+        User user = userService.checkLoginAccountInfo(getAccountInfo());
+        controlMap.put("user", user.getUsername());
+        System.out.println("Welcome " + user.getUsername());
+    }
+
+    public void logout() {
+        System.out.println("Goodbye, " + controlMap.get("user"));
+        controlMap.put("continue service", "false");
+        controlMap.put("user", "");
     }
 
     public void registerUser() {
