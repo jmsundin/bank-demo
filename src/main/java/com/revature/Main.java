@@ -1,6 +1,10 @@
 package com.revature;
 
 import com.revature.controller.UserController;
+import com.revature.entity.User;
+import com.revature.repository.SqliteUserDao;
+import com.revature.repository.UserDao;
+import com.revature.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,10 +17,8 @@ public class Main {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         try (Scanner scanner = new Scanner(System.in)) {
-            // UserDao
-            // UserService
-
-
+            UserDao userDao = new SqliteUserDao();
+            UserService userService = new UserService(userDao);
             UserController controller = new UserController(scanner);
 
             Map<String, String> controlMap = new HashMap<>();
