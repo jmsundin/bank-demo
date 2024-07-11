@@ -49,7 +49,8 @@ public class UserController {
 
     public void registerUser() {
         User accountInfo = getAccountInfo();
-        System.out.println(accountInfo);
+        User newUser = userService.validateAccountInfo(accountInfo);
+        System.out.println("New account created: " + newUser);
     }
 
     public User getAccountInfo() {
