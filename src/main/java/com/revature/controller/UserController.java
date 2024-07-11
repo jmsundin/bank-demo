@@ -1,6 +1,7 @@
 package com.revature.controller;
 
 import com.revature.entity.User;
+import com.revature.service.UserService;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,9 +10,11 @@ import java.util.Scanner;
 public class UserController {
 
     private Scanner scanner;
+    private UserService userService;
 
-    public UserController(Scanner scanner) {
+    public UserController(Scanner scanner, UserService userService) {
         this.scanner = scanner;
+        this.userService = userService;
     }
 
     public void userPrompt(Map<String, String> controlMap) {
@@ -38,6 +41,10 @@ public class UserController {
         } catch(Exception e) {
             e.getStackTrace();
         }
+    }
+
+    public User login() {
+        return userService.checkLoginAccountInfo(getAccountInfo());
     }
 
     public void registerUser() {

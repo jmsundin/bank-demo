@@ -4,9 +4,8 @@ import com.revature.entity.User;
 import com.revature.exception.UserSQLException;
 import com.revature.utility.DatabaseConnector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SqliteUserDao  implements UserDao {
@@ -34,7 +33,21 @@ public class SqliteUserDao  implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        return List.of();
+        String sql = "SELECT * FROM users";
+        try(Connection conn = DatabaseConnector.createConnection()){
+            Statement stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql);
+            List<User> users = new ArrayList<>();
+            while(resultSet.next()){
+                User userRecord = new User();
+                userRecord.setUsername(resultSet.getString("username"));
+                userRecord.setPassword(resultSet.getString("password"));
+                users.add(userRecord);
+            }
+            return users;
+        } catch (SQLException exception){
+            throw new UserSQLException(exception.getMessage());
+        }
     }
 
 }
