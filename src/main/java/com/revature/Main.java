@@ -1,9 +1,12 @@
 package com.revature;
 
+import com.revature.controller.CheckingAccountController;
 import com.revature.controller.UserController;
-import com.revature.entity.User;
+import com.revature.repository.CheckingAccountDao;
+import com.revature.repository.SqliteCheckingAccountDao;
 import com.revature.repository.SqliteUserDao;
 import com.revature.repository.UserDao;
+import com.revature.service.CheckingAccountService;
 import com.revature.service.UserService;
 
 import java.util.HashMap;
