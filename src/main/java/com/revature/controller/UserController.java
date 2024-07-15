@@ -54,6 +54,7 @@ public class UserController {
     public AppState registerUser() {
         User accountInfo = getAccountInfo();
         User newUser = userService.validateAccountInfo(accountInfo);
+        controlMap.put("user", newUser.getUsername());
         System.out.println("New account created: " + newUser);
         return AppState.MAIN_MENU;
     }
