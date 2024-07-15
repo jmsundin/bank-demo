@@ -30,20 +30,18 @@ public class UserController {
 
             switch (input) {
                 case "1":
-                    login();
-                    break;
+                    return login();
                 case "2":
-                    registerUser();
-                    break;
-                case "3":
-                    logout();
+                    return registerUser();
                 case "q":
                     // end user session
                     controlMap.put("continue service", "false");
+                    return AppState.QUIT;
             }
         } catch(Exception e) {
             e.getStackTrace();
         }
+        return AppState.LANDING_PROMPT;
     }
 
     public void login() {
