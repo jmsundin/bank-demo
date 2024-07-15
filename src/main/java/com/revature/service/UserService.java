@@ -4,7 +4,6 @@ import com.revature.entity.User;
 import com.revature.exception.LoginFail;
 import com.revature.repository.UserDao;
 
-import java.sql.PreparedStatement;
 import java.util.List;
 
 public class UserService {
