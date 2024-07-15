@@ -1,9 +1,9 @@
 package com.revature.controller;
 
+import com.revature.AppState;
 import com.revature.entity.User;
 import com.revature.service.UserService;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
