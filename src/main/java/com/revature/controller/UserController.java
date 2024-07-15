@@ -26,7 +26,7 @@ public class UserController {
         System.out.println("Quit (type q + ENTER)");
 
         try {
-            String input = scanner.nextLine();
+            String input = scanner.next() + scanner.nextLine();
 
             switch (input) {
                 case "1":
@@ -60,13 +60,10 @@ public class UserController {
     }
 
     public User getAccountInfo() {
-        String username;
-        String password;
-
         System.out.println("Username: ");
-        username = scanner.nextLine();
+        String username = scanner.next() + scanner.nextLine();
         System.out.println("Password: ");
-        password = scanner.nextLine();
+        String password = scanner.next() + scanner.nextLine();
 
         return new User(username, password);
     }
