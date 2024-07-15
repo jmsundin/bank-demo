@@ -20,6 +20,10 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
             UserDao userDao = new SqliteUserDao();
             UserService userService = new UserService(userDao);
+
+            CheckingAccountDao checkingAccountDao = new SqliteCheckingAccountDao();
+            CheckingAccountService checkingAccountService = new CheckingAccountService(checkingAccountDao);
+
             Map<String, String> controlMap = new HashMap<>();
             controlMap.put("continue service", "true");
 
