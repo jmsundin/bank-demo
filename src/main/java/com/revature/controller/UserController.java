@@ -44,22 +44,18 @@ public class UserController {
         return AppState.LANDING_PROMPT;
     }
 
-    public void login() {
+    public AppState login() {
         User user = userService.checkLoginAccountInfo(getAccountInfo());
         controlMap.put("user", user.getUsername());
         System.out.println("Welcome " + user.getUsername());
+        return AppState.MAIN_MENU;
     }
 
-    public void logout() {
-        System.out.println("Goodbye, " + controlMap.get("user"));
-        controlMap.put("continue service", "false");
-        controlMap.put("user", "");
-    }
-
-    public void registerUser() {
+    public AppState registerUser() {
         User accountInfo = getAccountInfo();
         User newUser = userService.validateAccountInfo(accountInfo);
         System.out.println("New account created: " + newUser);
+        return AppState.MAIN_MENU;
     }
 
     public User getAccountInfo() {
