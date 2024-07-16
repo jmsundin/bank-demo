@@ -23,7 +23,7 @@ public class UserService {
                 return userDao.createUser(accountInfo);
             }
         }
-        
+        // this exception holds our failure message for the user if their credentials are invalid
         throw new RegistrationFail("Username is not unique or username/password is too long");
     }
 
@@ -43,6 +43,13 @@ public class UserService {
     public boolean checkUsernamePasswordLength(User accountInfo) {
         boolean usernameIsValid = accountInfo.getUsername().length() <= 30;
         boolean passwordIsValid = accountInfo.getPassword().length() <= 30;
+
+        if (!usernameIsValid) {
+            System.out.println("Username is too long");
+        }
+        if (!passwordIsValid) {
+            System.out.println("Password is too long");
+        }
         return usernameIsValid && passwordIsValid;
     }
 
@@ -52,6 +59,7 @@ public class UserService {
         for (User user : users) {
             if(accountInfo.getUsername().equals(user.getUsername())){
                 usernameIsUnique = false;
+                System.out.println("Username is not unique");
                 break;
             }
         }
