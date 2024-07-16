@@ -47,6 +47,10 @@ public class UserController {
 
     public AppState login() {
         User user = userService.checkLoginAccountInfo(getAccountInfo());
+        if (user == null) {
+            System.out.print("\n");
+            return AppState.LANDING_PROMPT;
+        }
         controlMap.put("user", user.getUsername());
         System.out.print("\n");
         System.out.println("Welcome " + user.getUsername());
