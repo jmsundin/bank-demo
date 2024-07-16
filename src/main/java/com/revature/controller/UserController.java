@@ -69,9 +69,9 @@ public class UserController {
     public User getAccountInfo() {
         System.out.print("\n");
         System.out.println("Username: ");
-        String username = scanner.next() + scanner.nextLine();
+        String username = scanner.nextLine();
         System.out.println("Password: ");
-        String password = scanner.next() + scanner.nextLine();
+        String password = scanner.nextLine();
 
         return new User(username, password);
     }
