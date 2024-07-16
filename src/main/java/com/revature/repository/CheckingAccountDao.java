@@ -9,5 +9,5 @@ public interface CheckingAccountDao {
     double getCheckingAccountBalance(CheckingAccount checkingAccount);
     CheckingAccount deposit(CheckingAccount checkingAccount, double amount);
     CheckingAccount withdraw(CheckingAccount checkingAccount, double amount);
-    void closeAccount(CheckingAccount checkingAccount);
+    void deleteCheckingAccount(CheckingAccount checkingAccount);
 }
