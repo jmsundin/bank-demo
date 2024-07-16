@@ -122,4 +122,22 @@ public class SqliteCheckingAccountDao implements CheckingAccountDao {
             throw new UserSQLException(e.getMessage());
         }
     }
+
+    @Override
+    public void deleteCheckingAccount(CheckingAccount checkingAccount) {
+        String sql = "DELETE FROM accounts WHERE account_number = ? AND owner = ?";
+
+        try(Connection conn = DatabaseConnector.createConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, checkingAccount.getAccountNumber());
+            ps.setString(2, checkingAccount.getOwner());
+
+            int rs = ps.executeUpdate();
+            if (rs != 1) {
+                throw new UserSQLException("Account could not be deleted. Please try again.");
+            }
+        } catch (SQLException e){
+            throw new UserSQLException(e.getMessage());
+        }
+    }
 }
