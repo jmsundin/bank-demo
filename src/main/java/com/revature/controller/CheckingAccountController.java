@@ -22,9 +22,10 @@ public class CheckingAccountController {
     }
 
     public AppState showMainMenu() {
+        System.out.print("\n");
         System.out.println("View Accounts (type 1 + ENTER)");
         System.out.println("New Account (type 2 + ENTER)");
-        System.out.println("Logout (type 3 + ENTER");
+        System.out.println("Logout (type 3 + ENTER)");
 
         try {
             String input = scanner.next() + scanner.nextLine();
@@ -44,7 +45,7 @@ public class CheckingAccountController {
     }
 
     public AppState showAccountOptions() {
-
+        System.out.print("\n");
         System.out.println("Deposit (type 1 + ENTER)");
         System.out.println("Withdraw (type 2 + ENTER)");
         System.out.println("View Accounts (type 3 + ENTER)");
@@ -82,6 +83,7 @@ public class CheckingAccountController {
     public AppState getAccounts() {
         List<CheckingAccount> checkingAccounts = checkingAccountService.getCheckingAccounts(controlMap.get("user"));
         if (checkingAccounts.isEmpty()) {
+            System.out.print("\n");
             System.out.println("No accounts found.");
             return AppState.MAIN_MENU;
         }
@@ -93,6 +95,8 @@ public class CheckingAccountController {
         Map<Integer, CheckingAccount> indexToCheckingAccount = new HashMap<>();
         ListIterator<CheckingAccount> iterator = checkingAccounts.listIterator();
 
+        System.out.print("\n");
+        System.out.println("Accounts:");
         while(iterator.hasNext()) {
             int index = iterator.nextIndex();
             CheckingAccount account = iterator.next();
@@ -123,6 +127,7 @@ public class CheckingAccountController {
     }
 
     private void showAccountInfo(CheckingAccount checkingAccount) {
+        System.out.print("\n");
         System.out.printf("Account: %d, Balance: $%.2f\n", checkingAccount.getAccountNumber(), checkingAccount.getBalance());
     }
 
@@ -131,7 +136,10 @@ public class CheckingAccountController {
         checkingAccount.setAccountNumber((int) (Math.random() * 2_000_000_000));
         checkingAccount.setOwner(controlMap.get("user"));
         CheckingAccount newCheckingAccount = checkingAccountService.createCheckingAccount(checkingAccount);
+        
+        System.out.print("\n");
         System.out.println("Creating new checking account...");
+        System.out.print("\n");
         if (newCheckingAccount == null) System.out.println("Unsuccessful: creating new checking account.");
         else System.out.println("Successfully created account: " + newCheckingAccount.getAccountNumber());
         this.checkingAccount = newCheckingAccount;
@@ -185,6 +193,7 @@ public class CheckingAccountController {
     }
 
     public AppState logout() {
+        System.out.print("\n");
         System.out.println("Goodbye, " + controlMap.get("user"));
         controlMap.put("user", "");
         return AppState.QUIT;
