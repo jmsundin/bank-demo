@@ -37,8 +37,6 @@ public class UserController {
                 case "2":
                     return registerUser();
                 case "q":
-                    // end user session
-                    controlMap.put("continue service", "false");
                     return AppState.QUIT;
             }
         } catch(Exception e) {
