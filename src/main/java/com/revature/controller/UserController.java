@@ -48,6 +48,7 @@ public class UserController {
     public AppState login() {
         User user = userService.checkLoginAccountInfo(getAccountInfo());
         controlMap.put("user", user.getUsername());
+        System.out.print("\n");
         System.out.println("Welcome " + user.getUsername());
         return AppState.MAIN_MENU;
     }
@@ -56,11 +57,13 @@ public class UserController {
         User accountInfo = getAccountInfo();
         User newUser = userService.validateAccountInfo(accountInfo);
         controlMap.put("user", newUser.getUsername());
+        System.out.print("\n");
         System.out.println("New account created: " + newUser);
         return AppState.MAIN_MENU;
     }
 
     public User getAccountInfo() {
+        System.out.print("\n");
         System.out.println("Username: ");
         String username = scanner.next() + scanner.nextLine();
         System.out.println("Password: ");
