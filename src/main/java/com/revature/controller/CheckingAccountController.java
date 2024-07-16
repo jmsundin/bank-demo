@@ -47,10 +47,10 @@ public class CheckingAccountController {
 
         System.out.println("Deposit (type 1 + ENTER)");
         System.out.println("Withdraw (type 2 + ENTER)");
-        System.out.println("View Accounts (type 3 + ENTER");
-        System.out.println("Main Menu (type 4 + ENTER");
-        System.out.println("Logout (type 5 + ENTER");
-        System.out.println("Close Account (type CLOSE ACCOUNT + ENTER");
+        System.out.println("View Accounts (type 3 + ENTER)");
+        System.out.println("Main Menu (type 4 + ENTER)");
+        System.out.println("Logout (type 5 + ENTER)");
+        System.out.println("Close Account (type CLOSE ACCOUNT + ENTER)");
 
         
         try {
