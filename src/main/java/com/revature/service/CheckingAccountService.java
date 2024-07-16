@@ -35,6 +35,6 @@ public class CheckingAccountService {
     }
 
     public void closeAccount(CheckingAccount checkingAccount) {
-        checkingAccountDao.closeAccount(checkingAccount);
+        checkingAccountDao.deleteCheckingAccount(checkingAccount);
     }
 }
