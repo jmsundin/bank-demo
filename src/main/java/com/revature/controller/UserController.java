@@ -21,6 +21,9 @@ public class UserController {
 
     public AppState landingPrompt() {
 
+        System.out.print("\n");
+        System.out.println("Welcome to the Bank App!");
+        System.out.print("\n");
         System.out.println("Login (type 1 + ENTER)");
         System.out.println("Register (type 2 + ENTER)");
         System.out.println("Quit (type q + ENTER)");
