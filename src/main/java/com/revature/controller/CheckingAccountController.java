@@ -58,7 +58,7 @@ public class CheckingAccountController {
         
         try {
             String input = scanner.next() + scanner.nextLine();
-            
+
             switch (input) {
                 case "1":
                     return deposit(this.checkingAccount);
@@ -176,7 +176,14 @@ public class CheckingAccountController {
     }
 
     private AppState closeAccount() {
-
+        System.out.println("Are you sure you want to close this account? (type YES + ENTER to confirm)");
+        String input = scanner.next() + scanner.nextLine();
+        if (input.equals("YES")) {
+            checkingAccountService.closeAccount(this.checkingAccount);
+            System.out.println("Account closed.");
+        } else {
+            System.out.println("Account not closed.");
+        }
         return AppState.MAIN_MENU;
     }
 
