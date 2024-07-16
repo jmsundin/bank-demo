@@ -184,7 +184,7 @@ public class CheckingAccountController {
         return AppState.MAIN_MENU;
     }
 
-    private AppState logout() {
+    public AppState logout() {
         System.out.println("Goodbye, " + controlMap.get("user"));
         controlMap.put("user", "");
         return AppState.QUIT;
