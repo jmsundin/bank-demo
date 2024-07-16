@@ -34,4 +34,7 @@ public class CheckingAccountService {
         return checkingAccountDao.withdraw(checkingAccount, amount);
     }
 
+    public void closeAccount(CheckingAccount checkingAccount) {
+        checkingAccountDao.closeAccount(checkingAccount);
+    }
 }
