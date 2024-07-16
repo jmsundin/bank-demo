@@ -52,8 +52,11 @@ public class Main {
                     case ACCOUNT_MENU:
                         appState = checkingAccountController.showAccountOptions();
                         break;
-                    default:
-                        // appState = controller.userPrompt();
+                    case LOGOUT:
+                        appState = checkingAccountController.logout();
+                        break;
+                    case QUIT:
+                        System.out.println("Goodbye!");
                         break;
                 }
             }
