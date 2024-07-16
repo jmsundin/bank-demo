@@ -158,6 +158,11 @@ public class CheckingAccountController {
         double currentBalance = checkingAccountService.getAccountBalance(checkingAccount);
         double newBalance = amount + currentBalance;
         CheckingAccount updatedRecord = checkingAccountService.deposit(checkingAccount, newBalance);
+        if (updatedRecord == null) {
+            System.out.println("Deposit unsuccessful. Please try again.");
+            showAccountInfo(checkingAccount);
+            return AppState.ACCOUNT_MENU;
+        }
         this.checkingAccount = updatedRecord;
         showAccountInfo(updatedRecord);
         return AppState.ACCOUNT_MENU;
@@ -167,6 +172,11 @@ public class CheckingAccountController {
         System.out.println("Enter amount to withdraw: ");
         double amount = scanner.nextDouble();
         CheckingAccount updatedRecord = checkingAccountService.withdraw(checkingAccount, amount);
+        if (updatedRecord == null) {
+            System.out.println("Insufficient funds. Please try again.");
+            showAccountInfo(checkingAccount);
+            return AppState.ACCOUNT_MENU;
+        }
         this.checkingAccount = updatedRecord;
         showAccountInfo(updatedRecord);
         return AppState.ACCOUNT_MENU;
