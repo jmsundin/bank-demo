@@ -91,7 +91,7 @@ public class SqliteCheckingAccountDao implements CheckingAccountDao {
                 checkingAccount.setBalance(amount);
                 return checkingAccount;
             }
-            throw new UserSQLException("Deposit failed. Please try again.");
+            return null;
         } catch (SQLException e){
             throw new UserSQLException(e.getMessage());
         }
@@ -102,7 +102,7 @@ public class SqliteCheckingAccountDao implements CheckingAccountDao {
         double balance = getCheckingAccountBalance(checkingAccount);
 
         if (balance - amount < 0.00) {
-            throw new UserSQLException("Insufficient funds. Please try again.");
+            return null;
         }
 
         String sql = "UPDATE accounts SET balance = ? WHERE account_number = ? AND owner = ?";
@@ -117,7 +117,7 @@ public class SqliteCheckingAccountDao implements CheckingAccountDao {
 
             int rs = ps.executeUpdate();
             if (rs == 1) return checkingAccount;
-            throw new UserSQLException("Withdrawal failed. Please try again.");
+            return null;
         } catch (SQLException e){
             throw new UserSQLException(e.getMessage());
         }
