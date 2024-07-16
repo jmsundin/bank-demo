@@ -2,6 +2,7 @@ package com.revature.service;
 
 import com.revature.entity.User;
 import com.revature.exception.LoginFail;
+import com.revature.exception.RegistrationFail;
 import com.revature.repository.UserDao;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public class UserService {
                 return userDao.createUser(accountInfo);
             }
         }
-        // TODO: handle this exception as a custom exception
-        throw new RuntimeException("account info was not successfully validated");
+        
+        throw new RegistrationFail("Username is not unique or username/password is too long");
     }
 
     public User checkLoginAccountInfo(User accountInfo){
