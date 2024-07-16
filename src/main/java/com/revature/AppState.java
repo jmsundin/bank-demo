@@ -7,5 +7,6 @@ public enum AppState {
     MAIN_MENU,
     ACCOUNTS_LIST,
     ACCOUNT_MENU,
+    LOGOUT,
     QUIT
 }
