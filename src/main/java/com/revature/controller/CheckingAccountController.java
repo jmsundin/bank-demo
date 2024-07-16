@@ -175,13 +175,15 @@ public class CheckingAccountController {
         return this.checkingAccount;
     }
 
-    public void createAccount() {
+    private AppState closeAccount() {
 
+        return AppState.MAIN_MENU;
     }
 
-    public void logout() {
+    private AppState logout() {
         System.out.println("Goodbye, " + controlMap.get("user"));
         controlMap.put("continue service", "false");
         controlMap.put("user", "");
+        return AppState.QUIT;
     }
 }
