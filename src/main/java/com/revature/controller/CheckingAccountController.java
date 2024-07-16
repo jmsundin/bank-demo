@@ -10,10 +10,15 @@ public class CheckingAccountController {
 
     private Scanner scanner;
     private Map<String, String> controlMap;
+    private CheckingAccount checkingAccount;
+    private CheckingAccountService checkingAccountService;
 
-    public CheckingAccountController(Scanner scanner, Map<String, String> controlMap) {
+    public CheckingAccountController(Scanner scanner, CheckingAccountService checkingAccountService,
+                                     Map<String, String> controlMap) {
         this.scanner = scanner;
+        this.checkingAccountService = checkingAccountService;
         this.controlMap = controlMap;
+        this.checkingAccount = null;
     }
 
     public void showMenu() {
