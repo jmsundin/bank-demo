@@ -45,9 +45,11 @@ public class UserService {
         boolean passwordIsValid = accountInfo.getPassword().length() <= 30;
 
         if (!usernameIsValid) {
+            System.out.print("\n");
             System.out.println("Username is too long");
         }
         if (!passwordIsValid) {
+            System.out.print("\n");
             System.out.println("Password is too long");
         }
         return usernameIsValid && passwordIsValid;
@@ -59,6 +61,7 @@ public class UserService {
         for (User user : users) {
             if(accountInfo.getUsername().equals(user.getUsername())){
                 usernameIsUnique = false;
+                System.out.print("\n");
                 System.out.println("Username is not unique");
                 break;
             }
