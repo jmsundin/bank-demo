@@ -25,7 +25,6 @@ public class CheckingAccountController {
         System.out.println("View Accounts (type 1 + ENTER)");
         System.out.println("New Account (type 2 + ENTER)");
         System.out.println("Logout (type 3 + ENTER");
-        System.out.println("Quit (type q + ENTER)");
 
         try {
             String input = scanner.next() + scanner.nextLine();
@@ -37,8 +36,6 @@ public class CheckingAccountController {
                     return createCheckingAccount();
                 case "3":
                     return logout();
-                case "q":
-                    return AppState.QUIT;
             }
         } catch(Exception e) {
             e.getStackTrace();
@@ -189,7 +186,6 @@ public class CheckingAccountController {
 
     private AppState logout() {
         System.out.println("Goodbye, " + controlMap.get("user"));
-        controlMap.put("continue service", "false");
         controlMap.put("user", "");
         return AppState.QUIT;
     }
