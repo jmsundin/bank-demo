@@ -34,6 +34,18 @@ public class UserService {
             boolean passwordMatches = user.getPassword().equals(accountInfo.getPassword());
             if (usernameMatches && passwordMatches){
                 return accountInfo;
+            } else if (usernameMatches && !passwordMatches){
+                System.out.print("\n");
+                System.out.println("Password is incorrect: please try again");
+                return null;
+            } else if (!usernameMatches && passwordMatches){
+                System.out.print("\n");
+                System.out.println("Username is incorrect: please try again");
+                return null;
+            } else {
+                System.out.print("\n");
+                System.out.println("Username and password are incorrect: please try again");
+                return null;
             }
         }
         // this exception holds our failure message for the user if their credentials are invalid
