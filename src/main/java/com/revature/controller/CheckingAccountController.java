@@ -21,32 +21,29 @@ public class CheckingAccountController {
         this.checkingAccount = null;
     }
 
-    public void showMenu() {
-        System.out.println("Accounts (type 1 + ENTER)");
+    public AppState showMainMenu() {
+        System.out.println("View Accounts (type 1 + ENTER)");
         System.out.println("New Account (type 2 + ENTER)");
         System.out.println("Logout (type 3 + ENTER");
         System.out.println("Quit (type q + ENTER)");
 
         try {
-            String input = scanner.nextLine();
+            String input = scanner.next() + scanner.nextLine();
 
             switch (input) {
                 case "1":
-                    getAccounts();
-                    break;
+                    return getAccounts();
                 case "2":
-                    createAccount();
-                    break;
+                    return createCheckingAccount();
                 case "3":
-                    logout();
-                    break;
+                    return logout();
                 case "q":
-                    // end user session
-                    controlMap.put("continue service", "false");
+                    return AppState.QUIT;
             }
         } catch(Exception e) {
             e.getStackTrace();
         }
+        return AppState.LANDING_PROMPT;
     }
 
     public void getAccounts() {
