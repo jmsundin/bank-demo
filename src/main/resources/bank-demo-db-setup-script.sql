@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS accounts;
 
 CREATE TABLE users (
-    username TEXT,
+    username TEXT PRIMARY KEY,
     password TEXT
 );
 
