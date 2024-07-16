@@ -33,7 +33,7 @@ public class UserService {
             boolean usernameMatches = user.getUsername().equals(accountInfo.getUsername());
             boolean passwordMatches = user.getPassword().equals(accountInfo.getPassword());
             if (usernameMatches && passwordMatches){
-                return accountInfo;
+                return user;
             } else if (usernameMatches && !passwordMatches){
                 System.out.print("\n");
                 System.out.println("Password is incorrect: please try again");
@@ -41,10 +41,6 @@ public class UserService {
             } else if (!usernameMatches && passwordMatches){
                 System.out.print("\n");
                 System.out.println("Username is incorrect: please try again");
-                return null;
-            } else {
-                System.out.print("\n");
-                System.out.println("Username and password are incorrect: please try again");
                 return null;
             }
         }
